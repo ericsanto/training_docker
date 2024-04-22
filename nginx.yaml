@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend-app
+
+#Define as especificações do Deployment, incluindo o número de réplicas, o seletor e o template para os pods.
+spec:
+  replicas: 4
+  selector:
+  #Define que o Deployment deve gerenciar os pods que têm o rótulo "app: backend-app"
+    matchLabels:
+      app: backends-apps
+  template:
+    metadata:
+      name: pod-backend-nginx
+    #Define os rótulos para os pods gerenciados por este template. Neste caso, os pods terão o rótulo "app: backend-app"
+      labels:
+        app: backends-apps
+    #Define as especificações dos containers dentro dos pods.
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:1.25.5-perl
+
+
