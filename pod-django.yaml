@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: django
+  labels:
+    type: backend
+
+spec:
+  containers:
+  - name: django-container
+    image: eric096/django-atualizado:1
+    livenessProbe:
+      httpGet:
+        path: /app/teste/
+        port: 8000
+      initialDelaySeconds: 30
+      periodSeconds: 10
+    volumeMounts: 
+      - name: "volume-statics"
+        mountPath: "/my-volume/"
+  
+  volumes:
+  - name: volume-statics
+    emptyDir: {}
+
+    

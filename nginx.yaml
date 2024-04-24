@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
-  labels:
-    app: backend-app
+
 
 #Define as especificações do Deployment, incluindo o número de réplicas, o seletor e o template para os pods.
 spec:
@@ -23,5 +22,7 @@ spec:
       containers:
       - name: nginx-container
         image: nginx:1.25.5-perl
+        ports: 
+        - ContainerPort: 80
 
 
