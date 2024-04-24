@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: nginx-django
+  labels:
+    type: proxy
+
+spec:
+  containers:
+  - name: nginx-container
+    image: eric096/kubernetes-nginx:3
+    ports:
+    - containerPort: 80
+    
